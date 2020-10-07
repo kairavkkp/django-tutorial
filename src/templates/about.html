@@ -4,9 +4,17 @@
 <h1>About page</h1>
 <p>This is a template</p>
 
+<h3>{{ title|capfirst|title }}</h3>
 
 <p>
-    {{ my_number }} , {{ my_text }} , {{my_list}}
+    {{ my_number }} , {{my_list}}
+</p>
+
+<p>
+    {{ my_html|safe }}
+</p>
+<p>
+    {{my_html|striptags|slugify}}
 </p>
 
 <ul>
@@ -14,8 +22,18 @@
     <li>Item 2</li>
 </ul>
 <ul>
-    {% for my_sub_item in my_list%}
-    <li>{{forloop.counter}} - {{my_sub_item}}</li>
+    {% for abc in my_list%}
+    {% if abc == 1223 %}
+    <li>{{forloop.counter}} - {{abc|add:22}}</li>
+    {% elif abc == 'ABC' %}
+    <li>This is not the network</li>
+    {% else %}
+    <li>{{forloop.counter}} - {{abc}}</li>
+    {% endif%}
     {% endfor %}
 </ul>
+
+
+
+
 {% endblock %}
