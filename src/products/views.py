@@ -20,9 +20,6 @@ from .forms import ProductForm, RawProductForm
 #     return render(request, 'products/product_create.html', context)
 
 def product_create_view(request):
-    initial_data = {
-        'title': 'My this awesome title!'
-    }
     obj = Product.objects.get(id=1)
     form = ProductForm(request.POST or None, instance=obj)
     if form.is_valid():
@@ -35,12 +32,9 @@ def product_create_view(request):
     return render(request, 'products/product_create.html', context)
 
 
-def detailed_product_view(request):
-    obj = Product.objects.get(id=1)
-    # context = {
-    #     'title': obj.title,
-    #     'description': obj.description
-    # }
+def detailed_product_view(request, id):
+    obj = Product.objects.get(id=id)
+
     context = {
         'object': obj
     }
