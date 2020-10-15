@@ -22,8 +22,8 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('contact/', contact_view, name='contact'),
     path('about/', about_view, name='about'),
-    path('products/', product_list_view, name='prod-list'),
-    path('products/<int:id>', detailed_product_view, name='products'),
+    path('products/', product_list_view, name='product_list'),
+    path('products/<int:id>', detailed_product_view, name='product_detail'),
     path('create/', product_create_view, name='product_create'),
     path('products/<int:id>/delete', product_delete_view, name='product_delete')
 ]
