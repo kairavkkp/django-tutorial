@@ -8,5 +8,5 @@ class Article(models.Model):
     content = models.TextField()
     active = models.BooleanField(default=True)
 
-    def get_absolute_path(self):
-        return reverse('articles:article_list', kwargs={'id': self.id})
+    def get_absolute_url(self):
+        return reverse('articles:article_detail', kwargs={'id': self.id})
