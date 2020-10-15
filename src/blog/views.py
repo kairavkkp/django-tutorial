@@ -6,10 +6,23 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+from django.urls import reverse
 # Create your views here.
 
 from .models import Article
 from .forms import ArticleModelForm
+
+
+class ArticleDeleteView(DeleteView):
+    template_name = 'articles/article_delete.html'
+    #queryset = Article.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Article, id=id_)
+
+    def get_success_url(self):
+        return reverse('articles:article_list')
 
 
 class ArticleCreateView(CreateView):
